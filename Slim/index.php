@@ -263,6 +263,22 @@ function updateContact($contact_id) {
     }
 }
 
+//getdata
+$app->get('/allcomments', 'getUsers');
+
+function getUsers() {
+    $sql_query = "select * FROM comment ORDER BY id";
+    try {
+        $dbCon = getDB();
+        $stmt   = $dbCon->query($sql_query);
+        $users  = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $dbCon = null;
+        echo '{"users": ' . json_encode($users) . '}';
+    }
+    catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }    
+}
 
 //post data
 $app->post('/addcomment', 'addMycontact');
