@@ -287,7 +287,7 @@ function addMycontact() {
            global $app;
     $request  = $app->request();
     $wq = json_decode($request->getBody());
-    $sql = "INSERT INTO comment (comments) VALUES (:comments)";
+    $sql = "INSERT INTO comment (comments,pname) VALUES (:comments,:pname)";
     try {
         $db = getDB();
         $stmt = $db->prepare($sql);
