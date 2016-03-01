@@ -292,7 +292,7 @@ function addMycontact() {
         $db = getDB();
         $stmt = $db->prepare($sql);
         $stmt->bindParam("comments", $wq->comments);
-        // $stmt->bindParam("last_name", $wq->last_name);
+        $stmt->bindParam("pname", $wq->pname);
         // $stmt->bindParam("phone", $wq->phone);
         // $stmt->bindParam("region", $wq->region);
         // $stmt->bindParam("year", $wq->year);
